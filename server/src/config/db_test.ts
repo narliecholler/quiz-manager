@@ -7,7 +7,7 @@ import mongoose from 'mongoose'
 
 let mongoServer: MongoMemoryServer
 
-export async function connectDb() {
+export async function connectDb(): Promise<void> {
   mongoServer = await MongoMemoryServer.create()
   await mongoose.connect(mongoServer.getUri(), {});
 
@@ -24,16 +24,16 @@ export async function connectDb() {
   });
 }
 
-export async function closeConnection() {
+export async function closeConnection(): Promise<void> {
   await mongoose.connection.dropDatabase()
   await mongoose.connection.close()
   await mongoServer.stop()
 }
 
-export async function clearDatabase() {
+export async function clearDatabase(): Promise<void> {
   const collections = mongoose.connection.collections
   for (const key in collections) {
     const collection = collections[key]
-    await collection.deleteMany({ name: collection })
+    await collection.deleteMany({})
   }
 }

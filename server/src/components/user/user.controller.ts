@@ -1,20 +1,19 @@
 import { Request, Response, NextFunction } from 'express'
 import { signUp } from './user.service'
 
-export const SignUp = (req: Request, res: Response, next: NextFunction) => {
-  return res.status(200).json({ message: "pass!" });
-  // const { body: { credentials } } = req
+export const SignUp = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
+  const { body: { credentials } } = req
 
-  // try {
-  //   // const t = await signUp(credentials)
-  //   // return res.json(t)
+  try {
+    const data = await signUp(credentials)
+    return res.status(data.status).json({ message: data.data })
+  } catch (e) {
+    next(e)
+  }
 
-  //   res.json('hello')
-  // } catch (e) {
-  //   throw e
-  // }
+
 }
 
-export const SignIn = (req: Request, res: Response, next: NextFunction) => {
-
+export const SignIn = (req: Request, res: Response, next: NextFunction): Response => {
+  return res.status(200).json({ message: 'SignIn' })
 }

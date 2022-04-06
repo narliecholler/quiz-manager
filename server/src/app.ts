@@ -1,9 +1,9 @@
-import express from 'express'
+import express, { Application } from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import { UserRoute } from '@components/user'
 
-const App = () => {
+const App = (): Application => {
   const app = express()
   app.use(bodyParser.json({ limit: "50mb" }))
   app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }))

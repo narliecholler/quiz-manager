@@ -5,7 +5,7 @@ const router = Router()
 
 router
   .route('/signup')
-  .get(SignUp)
+  .post(SignUp)
 
 router
   .route('/signin')

@@ -6,10 +6,11 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "declaration": true,
-    "removeComments": false,
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "allowJs": false,
     "outDir": "./dist",
     "baseUrl": ".",
     "moduleResolution": "node",
@@ -18,7 +19,6 @@
     "strictNullChecks": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
     "paths": {
       "@*": [
         "src/*"
@@ -27,5 +27,11 @@
         "src/components/*"
       ]
     }
-  }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
