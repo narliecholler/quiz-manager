@@ -9,3 +9,11 @@ export async function hashPassword(password: string): Promise<string> {
     throw e
   }
 }
+
+export async function comparePassword(input: string, password: string): Promise<boolean> {
+  try {
+    return await bcrypt.compare(input, password)
+  } catch (e) {
+    throw e
+  }
+}

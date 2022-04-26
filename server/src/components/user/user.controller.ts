@@ -1,5 +1,10 @@
 import { Request, Response, NextFunction } from 'express'
-import { signUp } from './user.service'
+import { signUp, signIn } from './user.service'
+
+/*
+    needed; 
+      - middleware for validating email etc...
+*/
 
 export const SignUp = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
   const { body: { credentials } } = req
@@ -10,10 +15,15 @@ export const SignUp = async (req: Request, res: Response, next: NextFunction): P
   } catch (e) {
     next(e)
   }
-
-
 }
 
-export const SignIn = (req: Request, res: Response, next: NextFunction): Response => {
-  return res.status(200).json({ message: 'SignIn' })
+export const SignIn = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
+  const { body: { details } } = req
+
+  try {
+    const response = await signIn(details)
+    return res.status(response.status).send(response.data ? { ...response.data } : response.message)
+  } catch (e) {
+    next(e)
+  }
 }

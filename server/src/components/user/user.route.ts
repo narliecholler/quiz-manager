@@ -9,6 +9,6 @@ router
 
 router
   .route('/signin')
-  .get(SignIn)
+  .post(SignIn)
 
 export default router
