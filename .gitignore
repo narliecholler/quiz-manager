@@ -2,5 +2,5 @@ server/dist
 server/.env
 server/node_modules
 
-frontend/build
-frontend/node_modules
+build
+node_modules

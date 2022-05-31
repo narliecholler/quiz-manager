@@ -2,7 +2,6 @@ import App from '../../../app'
 import supertest from 'supertest'
 import { connectDb, closeConnection, clearDatabase } from '../../../config/db_test'
 
-
 const request = supertest(App());
 
 describe('Testing user controller', () => {

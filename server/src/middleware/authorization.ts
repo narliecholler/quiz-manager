@@ -18,8 +18,6 @@ export function verifyToken(req: AuthInfo, res: Response, next: NextFunction): R
 
   try {
     const decoded = jwt.verify(token, process.env.TOKEN_STRING)
-    console.log('decoded', decoded)
-    // req.user = decoded
   } catch (e) {
     next(e)
   }
